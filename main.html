@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunidade de RLSS</title>
+    <style>
+        /* Estilo geral */
+        body {
+            margin: 0;
+            font-family: 'Poppins', Arial, sans-serif;
+            background: linear-gradient(135deg, #f5a623, #4a90e2); /* Laranja e azul */
+            color: #fff;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        /* Navegação superior */
+        .navbar {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7); /* Sombreamento escuro */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .nav-buttons button {
+            background: none;
+            color: #fff;
+            border: 2px solid #4a90e2;
+            padding: 12px 24px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.3s;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar .nav-buttons button:hover {
+            background: #4a90e2;
+            color: #fff;
+            box-shadow: 0 6px 10px rgba(72, 132, 209, 0.8);
+            transform: scale(1.05); /* Aumenta o botão ao passar o mouse */
+        }
+
+        /* Banner */
+        .top-banner {
+            width: 100%;
+            height: 300px;
+            background: url('https://source.unsplash.com/1920x1080/?teamwork,community') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+            margin-top: 70px;
+            border-bottom: 5px solid #4a90e2;
+        }
+
+        .top-banner h1 {
+            font-size: 45px;
+            margin: 0;
+            color: #fff;
+        }
+
+        .top-banner img {
+            width: 100px;
+            margin-bottom: 15px;
+            border: 3px solid #4a90e2;
+            border-radius: 50%;
+        }
+
+        /* Conteúdo */
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+        }
+
+        .container h2 {
+            font-size: 30px;
+            margin-bottom: 20px;
+            color: #f5a623;
+        }
+
+        .container p {
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        /* Notícias */
+        .news-section {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .news-article {
+            margin-bottom: 20px;
+            padding: 20px;
+            background: rgba(74, 144, 226, 0.1);
+            border-left: 5px solid #4a90e2;
+            border-radius: 10px;
+        }
+
+        .news-article h3 {
+            margin: 0 0 10px;
+            font-size: 24px;
+            color: #f5a623;
+        }
+
+        .news-article p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        /* Contato */
+        .contact-section {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .contact-section h2 {
+            font-size: 30px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #4a90e2;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .contact-links a {
+            text-decoration: none;
+            padding: 15px 30px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #fff;
+            background: linear-gradient(45deg, #f5a623, #4a90e2);
+            border-radius: 8px;
+            transition: 0.3s;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-links a:hover {
+            background: linear-gradient(45deg, #4a90e2, #f5a623);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+        }
+
+        .contact-form {
+            margin-top: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            margin-bottom: 16px;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form button {
+            background: linear-gradient(45deg, #f5a623, #4a90e2);
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.3s;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-form button:hover {
+            background: linear-gradient(45deg, #4a90e2, #f5a623);
+            box-shadow: 0 8px 14px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navegação -->
+    <div class="navbar">
+        <div class="nav-buttons">
+            <button onclick="showSection('home')">Início</button>
+            <button onclick="showSection('news')">Notícias</button>
+            <button onclick="showSection('contact')">Contato</button>
+        </div>
+    </div>
+
+    <!-- Topo da página -->
+    <div id="home" class="top-banner">
+        <img src="https://i.pinimg.com/280x280_RS/d2/a2/8c/d2a28c36f6d9297162169d03c711af85.jpg" alt="Logo">
+        <h1>Comunidade de RLSS</h1>
+    </div>
+
+    <!-- Conteúdo -->
+    <div class="container">
+        <h2>Bem-vindo à Comunidade de RLSS</h2>
+        <p>
+            Nossa comunidade de RLSS é um espaço para colaboração, aprendizado e conexão. Descubra eventos, participe de discussões
+            e entre em contato conosco pelo WhatsApp, Discord e E-mail!
+        </p>
+
+        <!-- Notícias -->
+        <div id="news" class="news-section">
+            <h2>Últimas Notícias</h2>
+            <div class="news-article">
+                <h3>Nova versão do site!</h3>
+                <p>Nesta nova versão foi iplementada a aba de Notícias!</p>
+            </div>
+            <div class="news-article">
+                <h3>Nova versão do site!</h3>
+                <p>Nesta nova versão foi adicionada a aba de contato tanto para WhatsApp quanto Discord e E-mail!</p>
+            </div>
+        </div>
+
+        <!-- Contato -->
+        <div id="contact" class="contact-section">
+            <h2>Entre em Contato</h2>
+            <div class="contact-links">
+                <a href="https://discord.gg/4mfyTAnT" target="_blank">Discord</a>
+                <a href="mailto:admin@rlsscommunity.com">E-mail</a>
+                <a href="https://wa.me/5511999999999" target="_blank">WhatsApp</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(section) {
+            const sections = document.querySelectorAll('.container > div');
+            sections.forEach(s => s.style.display = 'none');
+            document.getElementById(section).style.display = 'block';
+        }
+        showSection('home');
+    </script>
+</body>
+</html>
